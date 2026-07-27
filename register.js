@@ -67,7 +67,7 @@ registerForm.addEventListener(
             data,
             error
         } =
-            await supabaseClient.auth.signUp({
+            await window.supabaseClient.auth.signUp({
 
                 email: email,
 
