@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Клип — SasaClips</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                S
+            </span>
+
+            <span>
+                Sasa<span>Clips</span>
+            </span>
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Главная
+            </a>
+
+            <a href="index.html#clips">
+                Популярное
+            </a>
+
+            <a href="#">
+                Правила
+            </a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="#" class="login-button">
+                Войти
+            </a>
+
+            <a href="#" class="upload-button">
+                Загрузить клип
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="video-page">
+
+        <div class="video-container">
+
+            <div class="video-player">
+
+                <video
+                    id="mainVideo"
+                    controls
+                    preload="metadata"
+                >
+
+                    <source
+                        src="assets/videos/test.mp4"
+                        type="video/mp4"
+                    >
+
+                    Твой браузер не поддерживает видео.
+
+                </video>
+
+            </div>
+
+
+            <div class="video-info">
+
+                <div class="video-title-row">
+
+                    <div>
+
+                        <h1 id="videoTitle">
+                            Загрузка...
+                        </h1>
+
+                        <div class="video-meta">
+
+                            <span id="videoAuthor">
+                                @user
+                            </span>
+
+                            <span>
+                                •
+                            </span>
+
+                            <span>
+                                2 дня назад
+                            </span>
+
+                            <span>
+                                •
+                            </span>
+
+                            <span>
+                                1.2K просмотров
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="like-button"
+                        id="likeButton"
+                    >
+
+                        ❤️
+
+                        <span id="likeCount">
+                            0
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="video-description">
+
+                    Лучший момент со стрима Sasavot 🔥
+
+                </div>
+
+            </div>
+
+
+            <div class="author-card">
+
+                <div class="author-avatar">
+                    S
+                </div>
+
+                <div class="author-info">
+
+                    <strong id="authorName">
+                        @user
+                    </strong>
+
+                    <span>
+                        Автор клипа
+                    </span>
+
+                </div>
+
+                <button class="subscribe-button">
+                    Подписаться
+                </button>
+
+            </div>
+
+
+            <section class="comments-section">
+
+                <h2>
+                    Комментарии
+                    <span>
+                        (0)
+                    </span>
+                </h2>
+
+                <div class="comment-form">
+
+                    <input
+                        type="text"
+                        id="commentInput"
+                        placeholder="Напиши комментарий..."
+                    >
+
+                    <button id="commentButton">
+                        Отправить
+                    </button>
+
+                </div>
+
+                <div id="commentsList">
+
+                    <div class="empty-comments">
+
+                        Пока нет комментариев.
+                        Будь первым! 👀
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            Sasa<span>Clips</span>
+        </div>
+
+        <p>
+            Фан-платформа сообщества Sasavot
+        </p>
+
+        <a
+            href="https://www.twitch.tv/sasavot"
+            target="_blank"
+        >
+
+            Twitch Sasavot ↗
+
+        </a>
+
+    </footer>
+
+
+    <script src="video.js"></script>
+
+</body>
+
+</html>

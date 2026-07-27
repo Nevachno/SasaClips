@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Профиль — SasaClips</title>
+
+    <!-- Проверка авторизации ДО загрузки страницы -->
+    <script>
+        if (!localStorage.getItem("currentUser")) {
+            window.location.replace("login.html");
+        }
+    </script>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        <span class="logo-icon">
+            S
+        </span>
+
+        <span>
+            Sasa<span>Clips</span>
+        </span>
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Главная
+        </a>
+
+        <a href="index.html#clips">
+            Популярное
+        </a>
+
+        <a href="rules.html">
+            Правила
+        </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <button
+            id="headerLogoutButton"
+            class="logout-button"
+            type="button"
+        >
+            Выйти
+        </button>
+
+
+        <a
+            href="upload.html"
+            class="upload-button"
+        >
+            Загрузить клип
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="profile-page">
+
+
+    <section class="profile-header">
+
+
+        <div
+            id="profileAvatar"
+            class="profile-avatar"
+        >
+        </div>
+
+
+        <div class="profile-info">
+
+            <span class="section-label">
+                PROFILE
+            </span>
+
+
+            <h1 id="profileUsername">
+                @username
+            </h1>
+
+
+            <p id="profileEmail">
+                email@example.com
+            </p>
+
+
+            <p id="profileDate">
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="profile-stats">
+
+
+        <div class="profile-stat">
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Клипов
+            </span>
+
+        </div>
+
+
+        <div class="profile-stat">
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Лайков
+            </span>
+
+        </div>
+
+
+        <div class="profile-stat">
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Просмотров
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <section class="profile-videos">
+
+        <span class="section-label">
+            MY CLIPS
+        </span>
+
+
+        <h2>
+            Мои клипы
+        </h2>
+
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                🎬
+            </div>
+
+
+            <h3>
+                Здесь пока пусто
+            </h3>
+
+
+            <p>
+                Загрузи свой первый клип,
+                чтобы он появился в профиле.
+            </p>
+
+
+            <a
+                href="upload.html"
+                class="upload-button"
+            >
+                Загрузить первый клип
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Sasa<span>Clips</span>
+    </div>
+
+
+    <p>
+        Фан-платформа сообщества Sasavot
+    </p>
+
+
+    <a
+        href="https://www.twitch.tv/sasavot"
+        target="_blank"
+    >
+        Twitch Sasavot ↗
+    </a>
+
+</footer>
+
+
+<script src="auth.js"></script>
+
+<script src="profile.js"></script>
+
+
+</body>
+
+</html>
