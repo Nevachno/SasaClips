@@ -7,7 +7,7 @@ const loginMessage =
 
 loginForm.addEventListener(
     "submit",
-    function (event) {
+    async function (event) {
 
         event.preventDefault();
 
@@ -24,51 +24,39 @@ loginForm.addEventListener(
             ).value;
 
 
-        const savedUser =
-            JSON.parse(
-                localStorage.getItem(
-                    "sasaUser"
-                )
-            );
-
-
-        if (!savedUser) {
-
-            showMessage(
-                "Аккаунт не найден. Сначала зарегистрируйся.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            savedUser.email !== email ||
-            savedUser.password !== password
-        ) {
-
-            showMessage(
-                "Неверный email или пароль.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        localStorage.setItem(
-            "currentUser",
-            JSON.stringify(
-                savedUser
-            )
+        showMessage(
+            "Входим...",
+            "success"
         );
 
 
+        const {
+            data,
+            error
+        } =
+            await window.supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        if (error) {
+
+            showMessage(
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
         showMessage(
-            "✅ Успешный вход! Перенаправляем...",
+            "✅ Успешный вход!",
             "success"
         );
 
