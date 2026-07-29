@@ -2,113 +2,94 @@
 // ПРОВЕРКА АВТОРИЗАЦИИ
 // =========================
 
-const currentUser =
-    JSON.parse(
-        localStorage.getItem(
-            "currentUser"
-        )
-    );
+async function loadProfile() {
+
+    const {
+        data,
+        error
+    } =
+        await window.supabaseClient.auth.getUser();
 
 
-if (!currentUser) {
+    if (error || !data.user) {
 
-    window.location.replace(
-        "login.html"
-    );
-
-}
-
-
-// =========================
-// ДАННЫЕ ПРОФИЛЯ
-// =========================
-
-if (currentUser) {
-
-
-    const profileUsername =
-        document.getElementById(
-            "profileUsername"
+        window.location.replace(
+            "login.html"
         );
 
-
-    const profileEmail =
-        document.getElementById(
-            "profileEmail"
-        );
-
-
-    const profileAvatar =
-        document.getElementById(
-            "profileAvatar"
-        );
-
-
-    const profileDate =
-        document.getElementById(
-            "profileDate"
-        );
-
-
-    profileUsername.textContent =
-        `@${currentUser.username}`;
-
-
-    profileEmail.textContent =
-        currentUser.email;
-
-
-    profileAvatar.textContent =
-        currentUser.username
-            .charAt(0)
-            .toUpperCase();
-
-
-    if (currentUser.createdAt) {
-
-        const date =
-            new Date(
-                currentUser.createdAt
-            );
-
-
-        profileDate.textContent =
-            `На SasaClips с ${
-                date.toLocaleDateString(
-                    "ru-RU"
-                )
-            }`;
+        return;
 
     }
 
 
+    const user =
+        data.user;
+
+
     // =========================
-    // КНОПКА ВЫХОДА
+    // ДАННЫЕ ПРОФИЛЯ
     // =========================
 
-    const logoutButton =
-        document.getElementById(
-            "headerLogoutButton"
+    document.getElementById(
+        "profileUsername"
+    ).textContent =
+        "@" +
+        (
+            user.user_metadata.username ||
+            "user"
         );
 
 
-    logoutButton.addEventListener(
-        "click",
-        function () {
+    document.getElementById(
+        "profileEmail"
+    ).textContent =
+        user.email;
 
 
-            // Удаляем аккаунт из текущей сессии
-            localStorage.removeItem(
-                "currentUser"
-            );
+    document.getElementById(
+        "profileAvatar"
+    ).textContent =
+        (
+            user.user_metadata.username ||
+            "U"
+        )
+        .charAt(0)
+        .toUpperCase();
 
 
-            // Переходим на главную
-            window.location.replace(
-                "index.html"
-            );
+    document.getElementById(
+        "profileDate"
+    ).textContent =
+        "На SasaClips с " +
+        new Date(
+            user.created_at
+        ).toLocaleDateString(
+            "ru-RU"
+        );
 
-        }
-    );
+
+    // =========================
+    // ВЫХОД
+    // =========================
+
+    document
+        .getElementById(
+            "headerLogoutButton"
+        )
+        .addEventListener(
+            "click",
+            async function () {
+
+                await window.supabaseClient.auth.signOut();
+
+                window.location.replace(
+                    "login.html"
+                );
+
+            }
+        );
 
 }
+
+
+loadProfile();
