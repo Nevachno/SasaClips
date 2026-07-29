@@ -1,8 +1,15 @@
+console.log("profile.js запущен");
+
+console.log(
+    "Supabase:",
+    window.supabaseClient
+);
 // =========================
 // ПРОВЕРКА АВТОРИЗАЦИИ
 // =========================
 
 async function loadProfile() {
+    console.log("loadProfile старт");
 
     const {
         data,
@@ -11,7 +18,14 @@ async function loadProfile() {
         await window.supabaseClient.auth.getUser();
 
 
-    if (error || !data.user) {
+    console.log(
+    "USER:",
+    data,
+    error
+);
+
+
+if (error || !data.user) {
 
         window.location.replace(
             "login.html"
