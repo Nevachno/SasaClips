@@ -1,3 +1,4 @@
+console.log("login.js загружен");
 const loginForm =
     document.getElementById("loginForm");
 
@@ -10,7 +11,7 @@ loginForm.addEventListener(
     async function (event) {
 
         event.preventDefault();
-
+        console.log("Кнопка входа нажата");
 
         const email =
             document.getElementById(
@@ -55,6 +56,7 @@ loginForm.addEventListener(
         }
 
 
+        console.log("Вошёл:", data.user);
         showMessage(
             "✅ Успешный вход!",
             "success"
