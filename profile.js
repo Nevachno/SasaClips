@@ -11,11 +11,21 @@ console.log(
 async function loadProfile() {
     console.log("loadProfile старт");
 
-    const {
-        data,
-        error
-    } =
-        await window.supabaseClient.auth.getUser();
+const session =
+    await window.supabaseClient.auth.getSession();
+
+console.log(
+    "SESSION:",
+    session
+);
+
+
+const {
+    data,
+    error
+}
+=
+    await window.supabaseClient.auth.getUser();
 
 
     console.log(
