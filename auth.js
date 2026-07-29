@@ -1,43 +1,57 @@
-const loggedInUser =
-    JSON.parse(
-        localStorage.getItem(
-            "currentUser"
-        )
-    );
+async function updateAuthUI() {
+
+    const {
+        data
+    } =
+        await window.supabaseClient.auth.getUser();
 
 
-const loginButtons =
-    document.querySelectorAll(
-        ".login-button"
-    );
+    const user =
+        data.user;
 
 
-loginButtons.forEach(
-    function (button) {
+    const loginButtons =
+        document.querySelectorAll(
+            ".login-button"
+        );
 
 
-        if (loggedInUser) {
+    loginButtons.forEach(
+        function (button) {
 
 
-            button.textContent =
-                `@${loggedInUser.username}`;
+            if (user) {
 
 
-            button.href =
-                "profile.html";
+                const username =
+                    user.user_metadata.username ||
+                    "user";
 
 
-        } else {
+                button.textContent =
+                    `@${username}`;
 
 
-            button.textContent =
-                "Войти";
+                button.href =
+                    "profile.html";
 
 
-            button.href =
-                "login.html";
+            } else {
+
+
+                button.textContent =
+                    "Войти";
+
+
+                button.href =
+                    "login.html";
+
+            }
 
         }
+    );
 
-    }
-);
+}
+
+
+updateAuthUI();
